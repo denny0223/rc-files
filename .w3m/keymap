@@ -1,0 +1,31 @@
+#
+# Ctrl  : C-, ^
+# Escape: ESC-, M-, ^[
+# Space : SPC, ' '
+# Tab   : TAB, ^i, ^I
+# Delete: DEL, ^?
+# Up    : UP, ^[[A
+# Down  : DOWN, ^[[B
+# Right : RIGHT, ^[[C
+# Left  : LEFT, ^[[D
+
+keymap	C-d		NEXT_PAGE
+keymap	C-u		PREV_PAGE
+
+keymap	C-w		CLOSE_TAB
+keymap	C-t		NEW_TAB
+keymap	T		TAB_LINK
+keymap	C-q		WRAP_TOGGLE
+
+keymap	C-a		ADD_BOOKMARK
+keymap	C-b		BOOKMARK
+
+keymap  C-f     ISEARCH
+keymap	/		ISEARCH
+keymap	?		ISEARCH_BACK
+
+keymap	b		PREV_WORD
+
+keymap	C-s		SAVE_SCREEN
+keymap	C-r		RELOAD
+
