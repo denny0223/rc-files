@@ -22,6 +22,11 @@ function parse_git_branch {
 
 PS1="[\u@\h \W]\$(parse_git_branch)\$ "
 
+# brew install bash-completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
 # PATH Android develop
 
 # PATH nvm
