@@ -1,0 +1,17 @@
+" Global settings
+set nu
+set ai
+set tabstop=4
+set shiftwidth=4
+set ic
+set incsearch
+set cursorline
+set showcmd
+set history=1000
+set wildmode=longest,list,full
+
+" map Ctel-L to be nohl, clear search highlight
+nnoremap <c-l> :nohl<cr>
+
+autocmd BufWritePre * :%s/\s\+$//e
+autocmd FileType gitcommit setlocal spell
