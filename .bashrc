@@ -6,8 +6,9 @@ if [ -f /etc/bashrc ]; then
 fi
 # User specific aliases and functions
 
-export HISTSIZE=100000
-export HISTCONTROL=erasedups
+export HISTSIZE=
+export HISTFILESIZE=
+export HISTCONTROL=ignorespace
 shopt -s histappend
 
 function parse_git_branch {
