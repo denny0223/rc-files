@@ -17,7 +17,30 @@ function parse_git_branch {
 
 PS1='[\u@\h \W]$(parse_git_branch)\$ '
 
-# PATH Android develop
+path_prepend() {
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="$1${PATH:+:$PATH}" ;;
+    esac
+}
 
-# PATH nvm
+path_append() {
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="${PATH:+$PATH:}$1" ;;
+    esac
+}
 
+[ -d "$HOME/.local/bin" ] && path_prepend "$HOME/.local/bin"
+[ -d "$HOME/bin" ] && path_append "$HOME/bin"
+
+# Examples for optional toolchains:
+# [ -d "$HOME/.cargo/bin" ] && path_append "$HOME/.cargo/bin"
+# [ -d "$HOME/Android/Sdk/platform-tools" ] && path_append "$HOME/Android/Sdk/platform-tools"
+# [ -d "$HOME/Android/Sdk/tools" ] && path_append "$HOME/Android/Sdk/tools"
+
+# Prefer mise for language runtimes and developer tools.
+# Install mise separately from https://mise.jdx.dev/; this shell activates it when available.
+if command -v mise > /dev/null 2>&1; then
+    eval "$(mise activate bash)"
+fi
