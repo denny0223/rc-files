@@ -39,7 +39,7 @@ Options:
   --help       Show this help
 
 When using curl:
-  curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --dry-run
+  curl -fsSL https://rc.denny.one/install | bash -s -- --dry-run
 USAGE
 }
 

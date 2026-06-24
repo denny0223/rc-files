@@ -15,7 +15,7 @@ Install the default high-use files:
 - `.tmux.conf`
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash
+curl -fsSL https://rc.denny.one/install | bash
 ```
 
 ## Common Options
@@ -23,25 +23,37 @@ curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh 
 Preview what would happen:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --dry-run
+curl -fsSL https://rc.denny.one/install | bash -s -- --dry-run
 ```
 
 Install the default files plus `.gitconfig`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --with-git
+curl -fsSL https://rc.denny.one/install | bash -s -- --with-git
 ```
 
 Install only selected files:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --only .bashrc .inputrc
+curl -fsSL https://rc.denny.one/install | bash -s -- --only .bashrc .inputrc
 ```
 
 Install all shared rc files:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --all
+curl -fsSL https://rc.denny.one/install | bash -s -- --all
+```
+
+The direct installer URL is also available:
+
+```bash
+curl -fsSL https://rc.denny.one/setup.sh | bash
+```
+
+If GitHub Pages or DNS is not available yet, use the raw GitHub fallback:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash
 ```
 
 ## What The Installer Does

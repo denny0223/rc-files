@@ -15,6 +15,8 @@ or unfamiliar computers.
 
 - `README.md`: minimal install instructions.
 - `setup.sh`: backup-and-symlink installer.
+- `install`: symlink URL alias for `setup.sh` on GitHub Pages.
+- `CNAME`: GitHub Pages custom domain for `rc.denny.one`.
 - `.bashrc`: Bash history, prompt, PATH helpers, and optional tool activation.
 - `.gitconfig`: shared Git defaults and aliases.
 - `.tmux.conf`: tmux keybindings and history settings.
@@ -74,6 +76,9 @@ assume one person's identity or credential flow.
 `setup.sh` is intentionally small and direct. It is optimized for fast
 `curl | bash` use while keeping the install scope explicit. If editing it:
 
+- Keep `setup.sh` as the only installer implementation. `install` should remain
+  a symlink alias to `setup.sh` for the short Pages URL.
+- Preserve `CNAME` as `rc.denny.one` unless the public install domain changes.
 - Preserve the explicit install sets instead of scanning every top-level file.
 - Keep the default install limited to `.bashrc`, `.inputrc`, and `.tmux.conf`.
 - Keep `.gitconfig` opt-in through `--with-git` or `--all` because it can affect
