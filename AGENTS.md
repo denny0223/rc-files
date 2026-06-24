@@ -6,10 +6,10 @@ This repository is a small, public dotfiles collection. It is meant to be easy
 to read, copy, and adapt, not a locked-down machine image. Prefer changes that
 teach a durable pattern over changes that encode one specific workstation.
 
-The installer in `setup.sh` clones this repository into `~/rc-files`, moves
-existing top-level rc files into `~/rc_backup`, and symlinks the repository's
-top-level dotfiles back into the home directory. Any committed top-level dotfile
-can therefore become active user configuration after installation.
+The installer in `setup.sh` clones or updates this repository at `~/rc-files`
+and symlinks an explicit set of selected rc files back into the home directory.
+The default install is intentionally small for quick use on classroom machines
+or unfamiliar computers.
 
 ## Repository Shape
 
@@ -71,13 +71,20 @@ assume one person's identity or credential flow.
 
 ## Installer Guidance
 
-`setup.sh` is intentionally small and direct. If editing it:
+`setup.sh` is intentionally small and direct. It is optimized for fast
+`curl | bash` use while keeping the install scope explicit. If editing it:
 
-- Preserve the backup-before-symlink behavior.
+- Preserve the explicit install sets instead of scanning every top-level file.
+- Keep the default install limited to `.bashrc`, `.inputrc`, and `.tmux.conf`.
+- Keep `.gitconfig` opt-in through `--with-git` or `--all` because it can affect
+  identity and credential behavior.
+- Preserve the backup-before-symlink behavior with timestamped backup
+  directories.
 - Be careful with destructive operations in `$HOME`.
 - Prefer clear POSIX-style shell where practical.
 - Test syntax with `bash -n setup.sh`.
-- Think through idempotency before changing backup or symlink behavior.
+- Think through idempotency before changing backup, update, or symlink
+  behavior.
 
 ## Validation Checklist
 

@@ -1,11 +1,60 @@
 # Denny's rc-files
 
-## Install
+A small public dotfiles collection for quickly getting a familiar shell,
+readline, and tmux setup on classroom machines or unfamiliar computers.
 
-At your home directory run
+This repository is meant to be easy to read, copy, and adapt. It is not a full
+workstation bootstrap.
 
+## Fast Install
+
+Install the default high-use files:
+
+- `.bashrc`
+- `.inputrc`
+- `.tmux.conf`
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash
 ```
-curl https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash
+
+## Common Options
+
+Preview what would happen:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --dry-run
 ```
 
-Your origin rc-files will move to rc_backup
+Install the default files plus `.gitconfig`:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --with-git
+```
+
+Install only selected files:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --only .bashrc .inputrc
+```
+
+Install all shared rc files:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash -s -- --all
+```
+
+## What The Installer Does
+
+The installer clones or updates this repository at `~/rc-files`, then symlinks
+the selected files into your home directory.
+
+If a target file already exists, it is moved to a timestamped backup directory:
+
+```text
+~/rc_backup-YYYYmmdd-HHMMSS/
+```
+
+Files that are already linked to `~/rc-files` are skipped.
+
+The installer requires `git`, `bash`, and `curl`.
