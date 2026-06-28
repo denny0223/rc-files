@@ -1,0 +1,12 @@
+# GitHub Pages builds this repository with Jekyll, which excludes dotfiles by
+# default. Keep this list aligned with the install targets in setup.sh so the
+# public Pages URL can serve the same rc files that the installer links.
+include:
+  - .bashrc
+  - .inputrc
+  - .tmux.conf
+  - .gitconfig
+  - .ideavimrc
+  - .vrapperrc
+  - .w3m/keymap
+  - .w3m/keymap.default

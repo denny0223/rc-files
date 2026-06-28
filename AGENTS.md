@@ -11,12 +11,19 @@ and symlinks an explicit set of selected rc files back into the home directory.
 The default install is intentionally small for quick use on classroom machines
 or unfamiliar computers.
 
+GitHub Pages at `https://rc.denny.one/` is part of the public distribution
+surface. It serves the short installer URL and, where useful, direct URLs for
+the shared rc files. Keep the Pages output, installer targets, and documented
+usage aligned as one public contract.
+
 ## Repository Shape
 
 - `README.md`: minimal install instructions.
 - `setup.sh`: backup-and-symlink installer.
 - `install`: symlink URL alias for `setup.sh` on GitHub Pages.
 - `CNAME`: GitHub Pages custom domain for `rc.denny.one`.
+- `_config.yml`: Jekyll include list for publishing installable dotfiles through
+  GitHub Pages.
 - `.bashrc`: Bash history, prompt, PATH helpers, and optional tool activation.
 - `.gitconfig`: shared Git defaults and aliases.
 - `.tmux.conf`: tmux keybindings and history settings.
@@ -40,6 +47,9 @@ or unfamiliar computers.
 - Preserve the repository's small surface area. Do not add package managers,
   lockfiles, generated output, or framework scaffolding unless the user has
   explicitly decided to grow the project in that direction.
+- Treat GitHub Pages as a distribution endpoint, not a separate app. Avoid
+  adding a site generator workflow or duplicated installer copy unless there is
+  an explicit decision to expand beyond this small dotfiles surface.
 - Treat uncommitted changes as user work. Inspect them when relevant, but do not
   stage, rewrite, or discard them unless the user asks.
 
@@ -79,6 +89,10 @@ assume one person's identity or credential flow.
 - Keep `setup.sh` as the only installer implementation. `install` should remain
   a symlink alias to `setup.sh` for the short Pages URL.
 - Preserve `CNAME` as `rc.denny.one` unless the public install domain changes.
+- Keep `_config.yml` aligned with the files that `setup.sh` can install. GitHub
+  Pages builds this repository with Jekyll, which excludes dotfiles by default;
+  installable dotfiles must be explicitly included if they should be directly
+  fetchable from `https://rc.denny.one/`.
 - Preserve the explicit install sets instead of scanning every top-level file.
 - Keep the default install limited to `.bashrc`, `.inputrc`, and `.tmux.conf`.
 - Keep `.gitconfig` opt-in through `--with-git` or `--all` because it can affect
@@ -97,6 +111,12 @@ Use focused checks for the files touched:
 
 - Shell files: `bash -n .bashrc setup.sh`
 - Git diff hygiene: `git diff --check`
+- Pages include hygiene when `setup.sh` targets or `_config.yml` change:
+  verify each `_config.yml` include path exists and reflects the installable rc
+  files.
+- Post-deploy smoke test when Pages distribution changes: check key public URLs
+  such as `https://rc.denny.one/install` and
+  `https://rc.denny.one/.bashrc`.
 - Bash startup smoke test when `.bashrc` changes:
   `env -i HOME="$HOME" USER="$USER" TERM=xterm PATH=/usr/local/bin:/usr/bin bash --rcfile .bashrc -i -c 'command -v bash >/dev/null'`
 - Review staged scope before committing: `git diff --cached --stat` and
