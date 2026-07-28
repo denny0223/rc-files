@@ -189,6 +189,10 @@ main() {
             [ "$dry_run" -eq 1 ] || die "missing source file in repository: $source"
         fi
 
+        if [ "$file" = ".gitconfig" ] && ! command -v delta > /dev/null 2>&1; then
+            printf '%s\n' 'Optional: install git-delta: https://github.com/dandavison/delta#installation (Git will fall back to less/cat.)'
+        fi
+
         if is_expected_link "$target" "$source"; then
             printf 'Skip: %s is already linked to %s\n' "$target" "$source"
             continue
