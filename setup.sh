@@ -194,7 +194,6 @@ main() {
         fi
 
         if is_expected_link "$target" "$source"; then
-            printf 'Skip: %s is already linked to %s\n' "$target" "$source"
             continue
         fi
 
@@ -209,7 +208,6 @@ main() {
             run mv "$target" "$backup_dir/$file"
         fi
 
-        printf 'Link: %s -> %s\n' "$target" "$source"
         run ln -s "$source" "$target"
     done < <(install_files)
 }
