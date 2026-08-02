@@ -37,7 +37,7 @@ path_append() {
 # Examples for optional toolchains:
 # [ -d "$HOME/.cargo/bin" ] && path_append "$HOME/.cargo/bin"
 # [ -d "$HOME/Android/Sdk/platform-tools" ] && path_append "$HOME/Android/Sdk/platform-tools"
-# [ -d "$HOME/Android/Sdk/tools" ] && path_append "$HOME/Android/Sdk/tools"
+# [ -d "$HOME/Android/Sdk/cmdline-tools/latest/bin" ] && path_append "$HOME/Android/Sdk/cmdline-tools/latest/bin"
 
 # Prefer mise for language runtimes and developer tools.
 # Install mise separately from https://mise.jdx.dev/; this shell activates it when available.
