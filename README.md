@@ -56,6 +56,19 @@ If GitHub Pages or DNS is not available yet, use the raw GitHub fallback:
 curl -fsSL https://raw.githubusercontent.com/denny0223/rc-files/master/setup.sh | bash
 ```
 
+## Neovim Configuration
+
+Install the separate Neovim configuration:
+
+```sh
+curl -fsSL https://nvim.denny.one/install | sh
+# or
+curl -fsSL https://rc.denny.one/nvim | sh
+```
+
+The installer clones or updates `~/.nvim`, backs up any existing Neovim configuration, and links it at `${XDG_CONFIG_HOME:-$HOME/.config}/nvim`.
+Open `nvim` once to install plugins. See the [Neovim repository](https://github.com/denny0223/.nvim) for requirements.
+
 ## What The Installer Does
 
 The installer clones or updates this repository at `~/rc-files`, then symlinks

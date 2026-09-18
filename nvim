@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+installer=$(curl -fsSL https://nvim.denny.one/install)
+printf '%s\n' "$installer" | sh
