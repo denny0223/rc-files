@@ -1,5 +1,4 @@
 [core]
-	editor = vim
 	pager = command -v delta >/dev/null 2>&1 && exec delta || exec less
 [color]
 	ui = true
@@ -11,6 +10,8 @@
 	tool = vimdiff
 [pull]
 	rebase = true
+[commit]
+	verbose = true
 [interactive]
 	diffFilter = command -v delta >/dev/null 2>&1 && exec delta --color-only || exec cat
 [delta]
